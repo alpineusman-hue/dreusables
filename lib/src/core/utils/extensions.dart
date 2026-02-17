@@ -2,7 +2,7 @@ import 'package:dreusables/src/const/theme/app_colors.dart';
 import 'package:dreusables/src/core/extensions/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
-extension LeftExtension on Widget {
+extension CenterLeftExtension on Widget {
   Widget get left {
     return Align(alignment: Alignment.centerLeft, child: this);
   }

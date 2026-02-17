@@ -44,7 +44,7 @@ extension CenterExtension on Widget {
   }
 }
 
-extension LeftExtension on Widget {
+extension LeftAlignedExtension on Widget {
   Widget get leftAligned {
     return Align(
       alignment: Alignment.topLeft,
