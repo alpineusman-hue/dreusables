@@ -1,4 +1,4 @@
-import 'package:dirtconnect/src/const/theme/app_colors.dart';
+import 'package:dreusables/src/const/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

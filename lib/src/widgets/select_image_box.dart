@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:dirtconnect/src/const/theme/app_colors.dart';
+import 'package:dreusables/src/const/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SelectedImageBox extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:dirtconnect/src/const/theme/app_colors.dart';
-import 'package:dirtconnect/src/const/theme/app_spacing.dart';
+import 'package:dreusables/src/const/theme/app_colors.dart';
+import 'package:dreusables/src/const/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

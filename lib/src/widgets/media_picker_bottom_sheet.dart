@@ -1,6 +1,6 @@
-import 'package:dirtconnect/src/const/theme/app_colors.dart';
-import 'package:dirtconnect/src/core/extensions/widget_extension.dart';
-import 'package:dirtconnect/src/core/utils/image_picker_util.dart';
+import 'package:dreusables/src/const/theme/app_colors.dart';
+import 'package:dreusables/src/core/extensions/widget_extension.dart';
+import 'package:dreusables/src/core/utils/image_picker_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

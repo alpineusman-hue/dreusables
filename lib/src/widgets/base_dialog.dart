@@ -1,8 +1,8 @@
 import 'dart:math';
-import 'package:dirtconnect/src/const/theme/app_colors.dart';
-import 'package:dirtconnect/src/core/extensions/app_text_styles.dart';
-import 'package:dirtconnect/src/core/extensions/widget_extension.dart';
-import 'package:dirtconnect/src/widgets/app_button.dart';
+import 'package:dreusables/src/const/theme/app_colors.dart';
+import 'package:dreusables/src/core/extensions/app_text_styles.dart';
+import 'package:dreusables/src/core/extensions/widget_extension.dart';
+import 'package:dreusables/src/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
