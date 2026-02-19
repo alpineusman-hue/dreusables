@@ -80,8 +80,8 @@ extension CustomTextStyles on TextTheme {
         color: AppColors.textSecondary,
       );
 
-  TextStyle get buttonLarge => TextStyle(
-        fontSize: 17.sp,
+  TextStyle get buttonLarge => const TextStyle(
+        fontSize: 17,
         fontWeight: FontWeight.w600,
         fontFamily: 'SF Pro',
         color: Colors.white,
