@@ -14,6 +14,7 @@ class AppButton extends StatelessWidget {
     this.width,
     this.prefix,
     this.height = 56,
+    this.fontSize = 17,
   });
 
   final String text;
@@ -25,6 +26,7 @@ class AppButton extends StatelessWidget {
   final bool isNegative;
   final Widget? prefix;
   final double height;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +57,7 @@ class AppButton extends StatelessWidget {
           Text(
             text,
             style: theme.buttonLarge.copyWith(
+              fontSize: fontSize,
               color: isNegative ? AppColors.secondaryDark : AppColors.textWhite,
             ),
           ),
