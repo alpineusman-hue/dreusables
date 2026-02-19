@@ -21,6 +21,11 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
+# Files containing API keys / secrets (use template versions)
+android/app/src/main/AndroidManifest.xml
+ios/Runner/AppDelegate.swift
+ios/Runner/GoogleService-Info.plist
+
 # Flutter/Dart/Pub related
 # Libraries should not include pubspec.lock, per https://dart.dev/guides/libraries/private-files#pubspeclock.
 /pubspec.lock
