@@ -9,11 +9,13 @@ class ParentAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showLogo = false,
     this.title = '',
     this.onProfileIconTap,
+    this.onLogoTap,
   });
 
   final bool showLogo;
   final String title;
   final void Function()? onProfileIconTap;
+  final void Function()? onLogoTap;
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +37,17 @@ class ParentAppBar extends StatelessWidget implements PreferredSizeWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             if (showLogo)
-              ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(8),
-                child: SvgPicture.asset(
-                  'assets/svgs/logo.svg',
-                  width: 20,
-                  height: 20,
-                  fit: BoxFit.scaleDown,
+              InkWell(
+                borderRadius: BorderRadius.circular(20),
+                onTap: onLogoTap,
+                child: ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(8),
+                  child: SvgPicture.asset(
+                    'assets/svgs/logo.svg',
+                    width: 20,
+                    height: 20,
+                    fit: BoxFit.scaleDown,
+                  ),
                 ),
               )
             else
