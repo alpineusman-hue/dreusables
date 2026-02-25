@@ -27,6 +27,7 @@ class ParentAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       child: Container(
         color: AppColors.background,
+        height: preferredSize.height,
         padding: EdgeInsets.fromLTRB(16, topPadding + 12, 16, 12),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,6 +66,7 @@ class ParentAppBar extends StatelessWidget implements PreferredSizeWidget {
         kToolbarHeight +
             MediaQueryData.fromView(
               WidgetsBinding.instance.platformDispatcher.views.first,
-            ).padding.top,
+            ).padding.top +
+            24,
       );
 }
