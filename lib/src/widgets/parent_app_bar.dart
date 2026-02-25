@@ -19,6 +19,7 @@ class ParentAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final topPadding = MediaQuery.paddingOf(context).top;
     return ClipRRect(
       borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(16),
@@ -26,12 +27,7 @@ class ParentAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       child: Container(
         color: AppColors.background,
-        padding: EdgeInsets.fromLTRB(
-          16,
-          MediaQuery.paddingOf(context).top + 12,
-          16,
-          12,
-        ),
+        padding: EdgeInsets.fromLTRB(16, topPadding + 12, 16, 12),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,5 +61,10 @@ class ParentAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 50);
+  Size get preferredSize => Size.fromHeight(
+        kToolbarHeight +
+            MediaQueryData.fromView(
+              WidgetsBinding.instance.platformDispatcher.views.first,
+            ).padding.top,
+      );
 }
