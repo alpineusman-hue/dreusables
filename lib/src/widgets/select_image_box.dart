@@ -1,13 +1,19 @@
 import 'dart:io';
 
-import 'package:dreusables/src/const/theme/app_colors.dart';
+import 'package:dreusables/dirconnect_package.dart';
 import 'package:flutter/material.dart';
 
 class SelectedImageBox extends StatelessWidget {
-  const SelectedImageBox({super.key, required this.imagePath, this.onTap});
+  const SelectedImageBox({
+    super.key,
+    required this.imagePath,
+    this.onTap,
+    this.isNetworkUrl = false,
+  });
 
   final String imagePath;
   final void Function()? onTap;
+  final bool isNetworkUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +26,12 @@ class SelectedImageBox extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: const Color(0xffE5E5E5)),
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.file(File(imagePath), fit: BoxFit.cover),
-          ),
+          child: isNetworkUrl
+              ? CachedImageWidget(url: imagePath)
+              : ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.file(File(imagePath), fit: BoxFit.cover),
+                ),
         ),
         Positioned(
           top: 4,
