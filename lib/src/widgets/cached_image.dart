@@ -9,6 +9,7 @@ class CachedImageWidget extends StatelessWidget {
     this.borderRadius,
     required this.url,
     this.size,
+    this.isWeb = false,
     this.fit,
   });
 
@@ -17,6 +18,7 @@ class CachedImageWidget extends StatelessWidget {
   final double? width;
   final double? borderRadius;
   final BoxFit? fit;
+  final bool isWeb;
 
   bool _isNetworkUrl(String path) {
     return path.startsWith('http://') || path.startsWith('https://');
@@ -42,7 +44,21 @@ class CachedImageWidget extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius ?? 0),
-        child: _isNetworkUrl(url) ? _buildNetworkImage() : _buildPlaceholder(),
+        child: isWeb
+            ? Image.network(
+                url,
+                width: width ?? size,
+                height: size,
+                fit: fit ?? BoxFit.cover,
+                errorBuilder: (context, url, error) {
+                  debugPrint('❌ Error loading network image: $url - $error');
+                  return _buildPlaceholder();
+                },
+                webHtmlElementStrategy: WebHtmlElementStrategy.prefer,
+              )
+            : _isNetworkUrl(url)
+                ? _buildNetworkImage()
+                : _buildPlaceholder(),
       ),
     );
   }
