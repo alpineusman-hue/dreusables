@@ -1,7 +1,8 @@
-import 'dart:io';
-
 import 'package:dreusables/dirconnect_package.dart';
 import 'package:flutter/material.dart';
+
+import 'picked_local_image.dart'
+    if (dart.library.html) 'picked_local_image_web.dart';
 
 class SelectedImageBox extends StatelessWidget {
   const SelectedImageBox({
@@ -30,7 +31,10 @@ class SelectedImageBox extends StatelessWidget {
               ? CachedImageWidget(url: imagePath)
               : ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.file(File(imagePath), fit: BoxFit.cover),
+                  child: PickedLocalImage(
+                    path: imagePath,
+                    boxFit: BoxFit.cover,
+                  ),
                 ),
         ),
         Positioned(
