@@ -2,6 +2,7 @@ library dreusables;
 
 export 'src/widgets/app_button.dart';
 export 'src/widgets/app_logo.dart';
+export 'src/widgets/location_text_field.dart';
 export 'src/widgets/app_otp_field.dart';
 export 'src/widgets/app_progress_bar.dart';
 export 'src/widgets/app_text_field.dart';
@@ -46,3 +47,5 @@ export 'src/core/utils/image_picker_util.dart';
 export 'src/core/utils/marker_icon_utils.dart';
 export 'src/core/utils/mask_number.dart';
 export 'src/core/utils/validators.dart';
+export 'src/core/utils/input_decoration.dart';
+export 'src/core/data/datasources/places_functions_data_source.dart';
