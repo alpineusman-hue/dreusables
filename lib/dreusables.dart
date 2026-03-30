@@ -18,6 +18,7 @@ export 'src/widgets/parent_app_bar.dart';
 export 'src/widgets/select_image_box.dart';
 export 'src/widgets/upload_media_box.dart';
 export 'src/widgets/webview_modal.dart';
+export 'src/widgets/phone_text_field_widget.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Theme & Design Tokens
