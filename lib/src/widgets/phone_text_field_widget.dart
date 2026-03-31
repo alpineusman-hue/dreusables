@@ -6,9 +6,13 @@ class PhoneTextFieldWidget extends StatefulWidget {
   const PhoneTextFieldWidget({
     super.key,
     required this.newPhoneNumber,
+    this.syncController,
+    this.readOnly = false,
   });
 
   final String newPhoneNumber;
+  final TextEditingController? syncController;
+  final bool readOnly;
 
   @override
   State<PhoneTextFieldWidget> createState() => _PhoneTextFieldWidgetState();
@@ -20,19 +24,51 @@ class _PhoneTextFieldWidgetState extends State<PhoneTextFieldWidget> {
   @override
   void initState() {
     super.initState();
-    newPhoneNumber = widget.newPhoneNumber;
+    if (widget.newPhoneNumber.isNotEmpty) {
+      newPhoneNumber = widget.newPhoneNumber;
+    } else if (widget.syncController != null &&
+        widget.syncController!.text.trim().isNotEmpty) {
+      newPhoneNumber = widget.syncController!.text.trim();
+    } else {
+      newPhoneNumber = '';
+    }
+    _syncToControllerIfNeeded();
+  }
+
+  @override
+  void didUpdateWidget(covariant PhoneTextFieldWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.newPhoneNumber != oldWidget.newPhoneNumber) {
+      newPhoneNumber = widget.newPhoneNumber;
+      _syncToControllerIfNeeded();
+    }
+  }
+
+  void _syncToControllerIfNeeded() {
+    final c = widget.syncController;
+    if (c == null) return;
+    final incoming = widget.newPhoneNumber;
+    if (incoming.isNotEmpty && c.text != incoming) {
+      c.text = incoming;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     return PhoneTextField(
+      key: ValueKey<String>('phone_tf_${widget.newPhoneNumber}'),
       initialCountryCode: 'AU',
       showCountryCodeAsIcon: true,
+      initialValue:
+          widget.newPhoneNumber.isNotEmpty ? widget.newPhoneNumber : null,
+      enabled: !widget.readOnly,
       onChanged: (phoneNumber) {
+        final complete = phoneNumber.completeNumber;
         setState(() {
-          newPhoneNumber = phoneNumber.completeNumber;
+          newPhoneNumber = complete;
         });
+        widget.syncController?.text = complete;
       },
       textStyle: theme.bodyMedium,
       decoration: InputDecoration(
